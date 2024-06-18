@@ -1,9 +1,11 @@
 import { InjectQueue } from '@nestjs/bull';
 import {
   Controller,
+  FileTypeValidator,
   Get,
   HttpException,
   HttpStatus,
+  ParseFilePipe,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -52,7 +54,14 @@ export class AppController {
     status: 400,
     description: 'Missed reqired file',
   })
-  async uploadFile(@UploadedFile() file: Express.Multer.File) {
+  async uploadFile(
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [new FileTypeValidator({ fileType: 'text/plain' })],
+      }),
+    )
+    file: Express.Multer.File,
+  ) {
     if (!file?.buffer) {
       throw new HttpException('Missed reqired file', HttpStatus.BAD_REQUEST);
     }
