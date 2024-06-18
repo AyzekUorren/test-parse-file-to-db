@@ -1,0 +1,44 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: nestjs_app
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=employees_db
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - database
+      - redis
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  database:
+    image: postgres:13
+    container_name: postgres_db
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=employees_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6
+    container_name: redis
+    ports:
+      - '6379:6379'
+
+volumes:
+  pgdata:

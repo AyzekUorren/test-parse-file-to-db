@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: nestjs_app
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=your_production_db_host
+      - DB_PORT=5432
+      - DB_USER=your_production_db_user
+      - DB_PASSWORD=your_production_db_password
+      - DB_NAME=your_production_db_name
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  redis:
+    image: redis:6
+    container_name: redis
+    ports:
+      - '6379:6379'
