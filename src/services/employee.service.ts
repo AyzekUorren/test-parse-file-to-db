@@ -1,7 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DepartmentDTO, DonationDTO, EmployeeDTO, StatementDTO } from 'src/dto';
-import { Department, Donation, Employee, Statement } from 'src/entities';
+import {
+  DepartmentDTO,
+  DonationDTO,
+  EmployeeDTO,
+  StatementDTO,
+} from 'src/common/dto';
+import { Department, Donation, Employee, Statement } from 'src/common/entities';
 import { DataSource, QueryRunner, Repository } from 'typeorm';
 
 @Injectable()

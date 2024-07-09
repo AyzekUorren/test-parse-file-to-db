@@ -3,8 +3,9 @@ import { Job } from 'bull';
 import { ParseService } from '../services/parse.service';
 import { EmployeeService } from '../services/employee.service';
 import { Logger } from '@nestjs/common';
+import { BullQueues } from 'src/common/enums';
 
-@Processor('file-processing')
+@Processor(BullQueues.FileProcessing)
 export class FileProcessor {
   private readonly logger = new Logger(FileProcessor.name);
 

@@ -17,7 +17,7 @@ services:
       - REDIS_PORT=6379
 
   redis:
-    image: redis:6
+    image: redis:7.2.5
     container_name: redis
     ports:
       - '6379:6379'

@@ -19,7 +19,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Queue } from 'bull';
-import { FileDTO } from './dto';
+import { FileDTO } from './common/dto';
 import { EmployeeService } from './services/employee.service';
 
 @Controller()

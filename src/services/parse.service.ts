@@ -1,6 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { FILE_DATA_TYPES } from 'src/constants';
-import { DepartmentDTO, DonationDTO, EmployeeDTO, StatementDTO } from 'src/dto';
+import { FILE_DATA_TYPES } from 'src/common/constants';
+import {
+  DepartmentDTO,
+  DonationDTO,
+  EmployeeDTO,
+  StatementDTO,
+} from 'src/common/dto';
 
 @Injectable()
 export class ParseService {
